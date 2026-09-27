@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -13,3 +15,6 @@ Route::get('/health', function () {
         'application' => 'Financial Guardian',
     ]);
 });
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('/login', [LoginController::class, 'store']);
